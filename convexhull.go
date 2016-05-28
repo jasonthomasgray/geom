@@ -1,41 +1,6 @@
 package geom
 
-import (
-	"math"
-	"sort"
-)
-
-// Vertex represents a point in 2 dimensions
-type Vertex struct {
-	X, Y int
-}
-
-// SideOfLine checks which side of the line ab the Vertex is on
-func (c Vertex) SideOfLine(a Vertex, b Vertex) int {
-
-	cross := float64((b.X-a.X)*(c.Y-a.Y) - (b.Y-a.Y)*(c.X-a.X))
-
-	if cross == 0 {
-		return 0
-	}
-	if math.Signbit(cross) {
-		return 1
-	}
-	return -1
-
-}
-
-// Lexographically is a sorter to sort Vertexs by X coordinate
-type Lexographically []Vertex
-
-func (a Lexographically) Len() int      { return len(a) }
-func (a Lexographically) Swap(i, j int) { a[i], a[j] = a[j], a[i] }
-func (a Lexographically) Less(i, j int) bool {
-	if a[i].X == a[j].X {
-		return a[i].Y < a[j].Y
-	}
-	return a[i].X < a[j].X
-}
+import "sort"
 
 func isNotRightTurn(points []Vertex) bool {
 	return points[2].SideOfLine(points[0], points[1]) != 1
