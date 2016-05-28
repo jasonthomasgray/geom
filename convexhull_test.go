@@ -1,7 +1,6 @@
 package geom
 
 import (
-	"fmt"
 	"math"
 	"math/rand"
 	"testing"
@@ -20,6 +19,6 @@ func TestConvexHull(t *testing.T) {
 		points[i].Y = math.Floor(rand.NormFloat64()*2 + 5)
 	}
 
-	fmt.Println(points)
-	fmt.Println(ConvexHull(points))
+	// fmt.Println(points)
+	// fmt.Println(ConvexHull(points))
 }
